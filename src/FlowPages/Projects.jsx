@@ -11,7 +11,7 @@ export default function Projects() {
                 Projects:
               </h1>
               <p className='text-7xl'>uniSSH</p>
-              <p className='text-7xl'>Avon</p>
+              <p className='text-7xl'>Avon Project Manager</p>
             </div>
 
             <div className='flex flex-col gap-3 text-end'>
