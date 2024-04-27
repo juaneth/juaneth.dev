@@ -16,8 +16,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 export default function Flow() {
-  document.title = `juaneth.dev`;
-
   {
     /* GSAP Snap stuff stolen from https://gsap.com/community/forums/topic/24423-how-to-snap-instantly-on-slight-scroll/
     
@@ -27,7 +25,13 @@ export default function Flow() {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
+  const [currentFlow, setCurentFlow] = useState(0);
+
   useGSAP(() => {
+    let panels = gsap.utils.toArray(".panel"),
+      observer = ScrollTrigger.normalizeScroll(true),
+      scrollTween;
+
     function goToSection(i) {
       scrollTween = gsap.to(window, {
         scrollTo: { y: i * innerHeight, autoKill: false },
@@ -35,16 +39,28 @@ export default function Flow() {
           observer.disable();
           observer.enable();
         },
-        duration: 1,
+        duration: 0.7,
         ease: "expo.out",
-        onComplete: () => (scrollTween = null),
+        onComplete: () => {
+          scrollTween = null;
+        },
         overwrite: true,
       });
+
+      setCurentFlow(i - currentFlow);
     }
 
-    let panels = gsap.utils.toArray(".panel"),
-      observer = ScrollTrigger.normalizeScroll(true),
-      scrollTween;
+    // on touch devices, ignore touchstart events if there's an in-progress tween so that touch-scrolling doesn't interrupt and make it wonky
+    document.addEventListener(
+      "touchstart",
+      (e) => {
+        if (scrollTween) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      },
+      { capture: true, passive: false }
+    );
 
     panels.forEach((panel, i) => {
       ScrollTrigger.create({
@@ -63,11 +79,64 @@ export default function Flow() {
     });
   });
 
+  const { contextSafe } = useGSAP();
+
+  const continueFunc = contextSafe(() => {
+    setCurentFlow(currentFlow + 1);
+
+    gsap.to(window, {
+      scrollTo: { y: (currentFlow + 1) * innerHeight, autoKill: false },
+      onStart: () => {},
+      duration: 0.7,
+      ease: "expo.out",
+      overwrite: true,
+    });
+  });
+
+  const backFunc = contextSafe(() => {
+    setCurentFlow(currentFlow - 1);
+
+    gsap.to(window, {
+      scrollTo: { y: (currentFlow - 1) * innerHeight, autoKill: false },
+      onStart: () => {},
+      duration: 0.7,
+      ease: "expo.out",
+      overwrite: true,
+    });
+  });
+
+  const popInAnimation = contextSafe(() => {
+    gsap.from("#backBtn", {
+      y: -200,
+    });
+  });
+
   return (
     <>
-      <div className='fixed top-0 left-0 h-screen w-screen z-10 flex flex-col justify-end items-center p-12 gap-3'>
-        <img src='/assets/Continue.svg' className='h-12' />
-        <h1 className='font-bold text-4xl text-white'>Continue</h1>
+      <div className='fixed top-0 left-0 h-screen w-screen z-10 flex flex-col justify-between items-center p-12 gap-3'>
+        {currentFlow >= 1 ? (
+          <div
+            role='button'
+            className='flex flex-col gap-3 items-center'
+            onClick={backFunc}
+            onLoad={popInAnimation}
+            id='backBtn'
+          >
+            <img src='/assets/Continue.svg' className='h-12 rotate-180' />
+            <h1 className='font-bold text-4xl text-white'>Back</h1>
+          </div>
+        ) : (
+          <></>
+        )}
+
+        <div
+          role='button'
+          className='flex flex-col gap-3 items-center'
+          onClick={continueFunc}
+        >
+          <img src='/assets/Continue.svg' className='h-12' />
+          <h1 className='font-bold text-4xl text-white'>Continue</h1>
+        </div>
       </div>
       <div className='flex flex-col' id='GScroll'>
         <Home></Home>
