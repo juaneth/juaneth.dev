@@ -24,7 +24,8 @@ export default function Flow() {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
   const [currentFlow, setCurentFlow] = useState(0);
-  const [currentProject, setCurentProject] = useState(0);
+
+  const [verticalScroll, setVerticalScroll] = useState(true);
 
   useGSAP(() => {
     let panels = gsap.utils.toArray(".panel"),
@@ -32,23 +33,37 @@ export default function Flow() {
       scrollTween;
 
     function goToSection(i) {
-      scrollTween = gsap.to(window, {
-        scrollTo: { y: i * innerHeight, x: 0, autoKill: false },
-        onStart: () => {
-          observer.disable();
-          observer.enable();
-          setCurentProject(0);
-          setverticalScrollVisible(true);
-        },
-        duration: 0.7,
-        ease: "expo.out",
-        onComplete: () => {
-          scrollTween = null;
-        },
-        overwrite: true,
-      });
+      if (verticalScroll) {
+        scrollTween = gsap.to(window, {
+          scrollTo: { y: i * innerHeight, autoKill: false },
+          onStart: () => {
+            observer.disable();
+            observer.enable();
+          },
+          duration: 0.7,
+          ease: "expo.out",
+          onComplete: () => {
+            scrollTween = null;
+          },
+          overwrite: true,
+        });
 
-      setCurentFlow(i - currentFlow);
+        setCurentFlow(i - currentFlow);
+      } else {
+        scrollTween = gsap.to(window, {
+          scrollTo: { y: currentFlow * innerHeight, autoKill: false },
+          onStart: () => {
+            observer.disable();
+            observer.enable();
+          },
+          duration: 0.7,
+          ease: "expo.out",
+          onComplete: () => {
+            scrollTween = null;
+          },
+          overwrite: false,
+        });
+      }
     }
 
     // on touch devices, ignore touchstart events if there's an in-progress tween so that touch-scrolling doesn't interrupt and make it wonky
@@ -78,7 +93,7 @@ export default function Flow() {
       end: "max",
       snap: 1 / (panels.length - 1),
     });
-  });
+  }, [verticalScroll]);
 
   const { contextSafe } = useGSAP();
 
@@ -140,7 +155,9 @@ export default function Flow() {
             onClick={continueFunc}
           >
             <img src='/assets/Continue.svg' className='h-12' />
-            <h1 className='font-bold text-4xl text-white'>Continue</h1>
+            <h1 className='font-bold text-4xl text-white'>
+              Continue {currentFlow}
+            </h1>
           </div>
         </div>
       )}
@@ -149,8 +166,7 @@ export default function Flow() {
         <Home></Home>
         <Projects
           setVerticalScrollVisible={setverticalScrollVisible}
-          currentProject={currentProject}
-          setCurentProject={setCurentProject}
+          setVerticalScroll={setVerticalScroll}
         ></Projects>
         <ArticleList></ArticleList>
         <Hire></Hire>

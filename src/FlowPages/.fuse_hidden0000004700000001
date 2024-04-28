@@ -12,11 +12,12 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 export default function Projects({
   setVerticalScrollVisible,
-  currentProject,
-  setCurentProject,
+  setVerticalScroll,
 }) {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+  const [currentProject, setCurentProject] = useState(0);
 
   useGSAP(() => {
     let projects = gsap.utils.toArray(".panel-project"),
@@ -49,6 +50,7 @@ export default function Projects({
 
   function Goto(i) {
     setVerticalScrollVisible(false);
+    setVerticalScroll(false);
     setCurentProject(i);
   }
 
@@ -62,8 +64,9 @@ export default function Projects({
               id='backBtnProjects'
               className='flex flex-col gap-3 items-center pointer-events-auto opacity-50 hover:opacity-100 transition-colors'
               onClick={() => {
-                setVerticalScrollVisible(true);
                 setCurentProject(0);
+                setVerticalScrollVisible(true);
+                setVerticalScroll(true);
               }}
               onLoad={popInAnimationProjects}
             >
@@ -99,7 +102,7 @@ export default function Projects({
                   Avon Project Manager
                 </p>
               </div>
-
+              {/*
               <div className='flex flex-col gap-3 text-end'>
                 <h1 className='text-6xl font-bold text-white tracking-tight'>
                   Legacy Projects:
@@ -107,10 +110,17 @@ export default function Projects({
                 <p className='text-5xl'>bot.dev</p>
                 <p className='text-5xl'>Omni.dev (Omnipetal)</p>
               </div>
+              */}
             </div>
 
             <div className='text-end'>
-              <h1 className="text-white text-5xl after:content-['_↗']">
+              <h1
+                role='button'
+                onClick={() => {
+                  open("https://github.com/juaneth?tab=repositories", "_blank");
+                }}
+                className="text-white text-5xl after:content-['_↗'] hover:underline"
+              >
                 More on GitHub
               </h1>
             </div>
