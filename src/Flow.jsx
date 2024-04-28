@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
-import { Link } from "react-router-dom";
+import { useParams, ScrollRestoration } from "react-router-dom";
 
 import Home from "./FlowPages/Home";
 import Projects from "./FlowPages/Projects";
@@ -20,6 +20,8 @@ export default function Flow() {
     Please show ZachSaucier from the GSAP forums some love ️️❤️*/
   }
 
+  let { projectId } = useParams();
+
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -38,7 +40,9 @@ export default function Flow() {
           observer.disable();
           observer.enable();
           setCurentProject(0);
-          setverticalScrollVisible(true);
+          if (projectId == undefined) {
+            setVerticalScrollVisible(true);
+          }
         },
         duration: 0.7,
         ease: "expo.out",
@@ -49,6 +53,11 @@ export default function Flow() {
       });
 
       setCurentFlow(i - currentFlow);
+    }
+
+    if (projectId) {
+      setVerticalScrollVisible(false);
+      goToSection(1);
     }
 
     // on touch devices, ignore touchstart events if there's an in-progress tween so that touch-scrolling doesn't interrupt and make it wonky
@@ -113,10 +122,16 @@ export default function Flow() {
     });
   });
 
-  const [verticalScrollVisible, setverticalScrollVisible] = useState(true);
+  const [verticalScrollVisible, setVerticalScrollVisible] = useState(true);
 
   return (
     <>
+      <ScrollRestoration
+        preventScrollReset={true}
+        getKey={(location, matches) => {
+          return location.pathname;
+        }}
+      />
       {verticalScrollVisible && (
         <div className='fixed top-0 left-0 h-screen w-screen flex flex-col justify-between pointer-events-none items-center p-12 gap-3'>
           {currentFlow >= 1 ? (
@@ -133,7 +148,6 @@ export default function Flow() {
           ) : (
             <div></div>
           )}
-
           <div
             role='button'
             className='flex flex-col gap-3 items-center pointer-events-auto'
@@ -148,7 +162,7 @@ export default function Flow() {
       <div className='flex flex-col'>
         <Home></Home>
         <Projects
-          setVerticalScrollVisible={setverticalScrollVisible}
+          setVerticalScrollVisible={setVerticalScrollVisible}
           currentProject={currentProject}
           setCurentProject={setCurentProject}
         ></Projects>

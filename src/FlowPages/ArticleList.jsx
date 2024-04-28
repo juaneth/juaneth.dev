@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import articles from '../articles.json'
+
 export default function ArticleList() {
   return (
     <>

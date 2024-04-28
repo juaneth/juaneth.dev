@@ -1,14 +1,16 @@
-import { Link } from "react-router-dom";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import UniSSH from "./Projects/UniSSH";
 import Avon from "./Projects/Avon";
+
+import { useParams, useNavigate } from "react-router-dom";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+import { FaArrowRight } from "react-icons/fa";
 
 export default function Projects({
   setVerticalScrollVisible,
@@ -18,10 +20,21 @@ export default function Projects({
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
+  let { projectId } = useParams();
+  const navigate = useNavigate();
+
   useGSAP(() => {
     let projects = gsap.utils.toArray(".panel-project"),
       observer = ScrollTrigger.normalizeScroll(true),
       scrollTweenProjects;
+
+    if (projectId == "avon") {
+      setCurentProject(2);
+    }
+
+    if (projectId == "uniSSH" || projectId == "unissh") {
+      setCurentProject(1);
+    }
 
     scrollTweenProjects = gsap.to(window, {
       scrollTo: { x: currentProject * innerWidth, autoKill: false },
@@ -52,6 +65,66 @@ export default function Projects({
     setCurentProject(i);
   }
 
+  useGSAP(() => {
+    let items = gsap.utils.toArray(".item");
+    let itemArrows = gsap.utils.toArray(".item-arrow");
+
+    items.forEach((item, i) => {
+      let animation = gsap.fromTo(
+        `#${item.id}`,
+        {
+          paused: true,
+          duration: 0.3,
+          repeatDelay: 0,
+          transformOrigin: "center left",
+          ease: "expo",
+          color: "#C9C9C9",
+          translateX: -64,
+        },
+        {
+          paused: true,
+          duration: 0.3,
+          repeatDelay: 0,
+          transformOrigin: "center left",
+          color: "white",
+          translateX: -64,
+        }
+      );
+
+      let arrowAnimation = gsap.fromTo(
+        `#${itemArrows[i].id}`,
+        {
+          paused: true,
+          duration: 0.3,
+          repeatDelay: 0,
+          ease: "expo",
+          color: "#C9C9C9",
+          x: -96,
+          opacity: 0,
+        },
+        {
+          paused: true,
+          duration: 0.3,
+          repeatDelay: 0,
+          color: "white",
+          opacity: 100,
+          x: 0,
+        }
+      );
+
+      item.addEventListener("mouseenter", () => {
+        animation.play();
+
+        arrowAnimation.play();
+      });
+
+      item.addEventListener("mouseleave", () => {
+        animation.reverse();
+        arrowAnimation.reverse();
+      });
+    });
+  });
+
   return (
     <>
       <div className='panel h-screen min-h-screen flex flex-row w-max'>
@@ -64,6 +137,10 @@ export default function Projects({
               onClick={() => {
                 setVerticalScrollVisible(true);
                 setCurentProject(0);
+
+                if (projectId) {
+                  navigate("/");
+                }
               }}
               onLoad={popInAnimationProjects}
             >
@@ -85,18 +162,28 @@ export default function Projects({
                     Goto(1);
                   }}
                   role='button'
-                  className='text-6xl lg:text-7xl'
+                  className='item text-6xl lg:text-7xl flex flex-row items-center'
+                  id='item-uniSSH'
                 >
-                  uniSSH
+                  <FaArrowRight
+                    id='unissh-arrow'
+                    className='h-12 item-arrow'
+                  ></FaArrowRight>
+                  <h1>uniSSH</h1>
                 </p>
                 <p
                   onClick={() => {
                     Goto(2);
                   }}
                   role='button'
-                  className='text-6xl lg:text-7xl'
+                  className='item text-6xl lg:text-7xl flex flex-row items-center'
+                  id='item-avon'
                 >
-                  Avon Project Manager
+                  <FaArrowRight
+                    id='avon-arrow'
+                    className='h-12 item-arrow'
+                  ></FaArrowRight>
+                  <h1>Avon Project Manager</h1>
                 </p>
               </div>
 
@@ -104,13 +191,35 @@ export default function Projects({
                 <h1 className='text-6xl font-bold text-white tracking-tight'>
                   Legacy Projects:
                 </h1>
-                <p className='text-5xl'>bot.dev</p>
-                <p className='text-5xl'>Omni.dev (Omnipetal)</p>
+                <p
+                  role='button'
+                  className="text-white/75 hover:text-white transition-all text-5xl after:content-['_↗'] hover:underline"
+                  onClick={() => {
+                    open("https://github.com/juaneth/bot.dev", "_blank");
+                  }}
+                >
+                  bot.dev
+                </p>
+                <p
+                  role='button'
+                  className="text-white/75 hover:text-white transition-all text-5xl after:content-['_↗'] hover:underline"
+                  onClick={() => {
+                    open("https://github.com/juaneth/Omnipetal", "_blank");
+                  }}
+                >
+                  Omni.dev (Omnipetal)
+                </p>
               </div>
             </div>
 
             <div className='text-end'>
-              <h1 className="text-white text-5xl after:content-['_↗']">
+              <h1
+                role='button'
+                className="text-white/75 hover:text-white transition-all text-5xl after:content-['_↗'] hover:underline"
+                onClick={() => {
+                  open("https://github.com/juaneth?tab=repositories", "_blank");
+                }}
+              >
                 More on GitHub
               </h1>
             </div>
