@@ -2,11 +2,9 @@ import { useEffect, useState, useRef } from "react";
 
 import { Link } from "react-router-dom";
 
-import articles from "./articles.json";
-
 import Home from "./FlowPages/Home";
 import Projects from "./FlowPages/Projects";
-import Article from "./FlowPages/Articles";
+import ArticleList from "./FlowPages/ArticleList";
 import Hire from "./FlowPages/Hire";
 import Socials from "./FlowPages/Socials";
 
@@ -17,7 +15,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 export default function Flow() {
   {
-    /* GSAP Snap stuff stolen from https://gsap.com/community/forums/topic/24423-how-to-snap-instantly-on-slight-scroll/
+    /* GSAP Snap Scroll stuff stolen from https://gsap.com/community/forums/topic/24423-how-to-snap-instantly-on-slight-scroll/
     
     Please show ZachSaucier from the GSAP forums some love ️️❤️*/
   }
@@ -89,7 +87,7 @@ export default function Flow() {
       onStart: () => {},
       duration: 0.7,
       ease: "expo.out",
-      overwrite: true,
+      overwrite: false,
     });
   });
 
@@ -108,40 +106,48 @@ export default function Flow() {
   const popInAnimation = contextSafe(() => {
     gsap.from("#backBtn", {
       y: -200,
+      ease: "expo.out",
     });
   });
 
+  const [verticalScrollVisible, setverticalScrollVisible] = useState(true);
+
   return (
     <>
-      <div className='fixed top-0 left-0 h-screen w-screen z-10 flex flex-col justify-between items-center p-12 gap-3'>
-        {currentFlow >= 1 ? (
+      {verticalScrollVisible && (
+        <div className='fixed top-0 left-0 h-screen w-screen flex flex-col justify-between pointer-events-none items-center p-12 gap-3'>
+          {currentFlow >= 1 ? (
+            <div
+              role='button'
+              className='flex flex-col gap-3 items-center pointer-events-auto'
+              onClick={backFunc}
+              onLoad={popInAnimation}
+              id='backBtn'
+            >
+              <img src='/assets/Continue.svg' className='h-12 rotate-180' />
+              <h1 className='font-bold text-4xl text-white'>Back</h1>
+            </div>
+          ) : (
+            <div></div>
+          )}
+
           <div
             role='button'
-            className='flex flex-col gap-3 items-center'
-            onClick={backFunc}
-            onLoad={popInAnimation}
-            id='backBtn'
+            className='flex flex-col gap-3 items-center pointer-events-auto'
+            onClick={continueFunc}
           >
-            <img src='/assets/Continue.svg' className='h-12 rotate-180' />
-            <h1 className='font-bold text-4xl text-white'>Back</h1>
+            <img src='/assets/Continue.svg' className='h-12' />
+            <h1 className='font-bold text-4xl text-white'>Continue</h1>
           </div>
-        ) : (
-          <div></div>
-        )}
-
-        <div
-          role='button'
-          className='flex flex-col gap-3 items-center'
-          onClick={continueFunc}
-        >
-          <img src='/assets/Continue.svg' className='h-12' />
-          <h1 className='font-bold text-4xl text-white'>Continue</h1>
         </div>
-      </div>
-      <div className='flex flex-col' id='GScroll'>
+      )}
+
+      <div className='flex flex-col'>
         <Home></Home>
-        <Projects></Projects>
-        <Article></Article>
+        <Projects
+          setVerticalScrollVisible={setverticalScrollVisible}
+        ></Projects>
+        <ArticleList></ArticleList>
         <Hire></Hire>
         <Socials></Socials>
       </div>

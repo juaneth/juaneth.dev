@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import Flow from "./Flow.jsx";
-import UniSSH from "./Pages/Projects/UniSSH.jsx";
 import Article from "./Pages/Article.jsx";
 import "./index.css";
 
@@ -16,10 +15,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Flow />,
-      },
-      {
-        path: "/unissh",
-        element: <UniSSH />,
       },
       {
         path: "/article/:id",
