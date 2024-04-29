@@ -165,6 +165,7 @@ export default function Flow() {
           setVerticalScrollVisible={setVerticalScrollVisible}
           currentProject={currentProject}
           setCurentProject={setCurentProject}
+          setCurrentFlow={setCurentFlow}
         ></Projects>
         <ArticleList></ArticleList>
         <Hire></Hire>

@@ -16,6 +16,7 @@ export default function Projects({
   setVerticalScrollVisible,
   currentProject,
   setCurentProject,
+  setCurrentFlow,
 }) {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -139,6 +140,7 @@ export default function Projects({
                 setCurentProject(0);
 
                 if (projectId) {
+                  setCurrentFlow(1);
                   navigate("/");
                 }
               }}
@@ -169,7 +171,7 @@ export default function Projects({
                     id='unissh-arrow'
                     className='h-12 item-arrow'
                   ></FaArrowRight>
-                  <h1>uniSSH</h1>
+                  <p>uniSSH</p>
                 </p>
                 <p
                   onClick={() => {
@@ -183,7 +185,7 @@ export default function Projects({
                     id='avon-arrow'
                     className='h-12 item-arrow'
                   ></FaArrowRight>
-                  <h1>Avon Project Manager</h1>
+                  <p>Avon Project Manager</p>
                 </p>
               </div>
 

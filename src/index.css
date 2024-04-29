@@ -6,6 +6,8 @@ body {
     font-family: "DM Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 .bg {
@@ -15,5 +17,11 @@ body {
 }
 
 ::-webkit-scrollbar {
-    display: none;
+    padding: 5px;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 5px;
 }
