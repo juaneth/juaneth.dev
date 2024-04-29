@@ -1,2 +1,2 @@
-# Juaneth.dev Website
-Built with Vite, React, TailwindCSS and DaisyUI
+# juaneth.dev
+## Portfolio website using GSAP for animations, React, Tailwind and DaisyUI
