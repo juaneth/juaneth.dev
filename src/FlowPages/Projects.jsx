@@ -64,67 +64,15 @@ export default function Projects({
   function Goto(i) {
     setVerticalScrollVisible(false);
     setCurentProject(i);
+
+    if (i == 2) {
+      navigate("/avon");
+    }
+
+    if (i == 1) {
+      navigate("/uniSSH");
+    }
   }
-
-  useGSAP(() => {
-    let items = gsap.utils.toArray(".item");
-    let itemArrows = gsap.utils.toArray(".item-arrow");
-
-    items.forEach((item, i) => {
-      let animation = gsap.fromTo(
-        `#${item.id}`,
-        {
-          paused: true,
-          duration: 0.3,
-          repeatDelay: 0,
-          transformOrigin: "center left",
-          ease: "expo",
-          color: "#C9C9C9",
-          translateX: -64,
-        },
-        {
-          paused: true,
-          duration: 0.3,
-          repeatDelay: 0,
-          transformOrigin: "center left",
-          color: "white",
-          translateX: -64,
-        }
-      );
-
-      let arrowAnimation = gsap.fromTo(
-        `#${itemArrows[i].id}`,
-        {
-          paused: true,
-          duration: 0.3,
-          repeatDelay: 0,
-          ease: "expo",
-          color: "#C9C9C9",
-          x: -96,
-          opacity: 0,
-        },
-        {
-          paused: true,
-          duration: 0.3,
-          repeatDelay: 0,
-          color: "white",
-          opacity: 100,
-          x: 0,
-        }
-      );
-
-      item.addEventListener("mouseenter", () => {
-        animation.play();
-
-        arrowAnimation.play();
-      });
-
-      item.addEventListener("mouseleave", () => {
-        animation.reverse();
-        arrowAnimation.reverse();
-      });
-    });
-  });
 
   return (
     <>
@@ -159,7 +107,7 @@ export default function Projects({
                 <h1 className='text-7xl lg:text-8xl font-bold text-white tracking-tight'>
                   Projects:
                 </h1>
-                <p
+                <h1
                   onClick={() => {
                     Goto(1);
                   }}
@@ -172,8 +120,8 @@ export default function Projects({
                     className='h-12 item-arrow'
                   ></FaArrowRight>
                   <p>uniSSH</p>
-                </p>
-                <p
+                </h1>
+                <h1
                   onClick={() => {
                     Goto(2);
                   }}
@@ -186,7 +134,7 @@ export default function Projects({
                     className='h-12 item-arrow'
                   ></FaArrowRight>
                   <p>Avon Project Manager</p>
-                </p>
+                </h1>
               </div>
 
               <div className='flex flex-col gap-3 text-end'>

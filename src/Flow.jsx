@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
-import { useParams, ScrollRestoration } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Home from "./FlowPages/Home";
 import Projects from "./FlowPages/Projects";
@@ -89,6 +89,66 @@ export default function Flow() {
     });
   });
 
+  useGSAP(() => {
+    let items = gsap.utils.toArray(".item");
+    let itemArrows = gsap.utils.toArray(".item-arrow");
+
+    items.forEach((item, i) => {
+      let animation = gsap.fromTo(
+        `#${item.id}`,
+        {
+          paused: true,
+          duration: 0.3,
+          repeatDelay: 0,
+          transformOrigin: "center left",
+          ease: "expo",
+          color: "#C9C9C9",
+          translateX: -64,
+        },
+        {
+          paused: true,
+          duration: 0.3,
+          repeatDelay: 0,
+          transformOrigin: "center left",
+          color: "white",
+          translateX: -64,
+        }
+      );
+
+      let arrowAnimation = gsap.fromTo(
+        `#${itemArrows[i].id}`,
+        {
+          paused: true,
+          duration: 0.3,
+          repeatDelay: 0,
+          ease: "expo",
+          color: "#C9C9C9",
+          x: -96,
+          opacity: 0,
+        },
+        {
+          paused: true,
+          duration: 0.3,
+          repeatDelay: 0,
+          color: "white",
+          opacity: 1,
+          x: 0,
+        }
+      );
+
+      item.addEventListener("mouseenter", () => {
+        animation.play();
+
+        arrowAnimation.play();
+      });
+
+      item.addEventListener("mouseleave", () => {
+        animation.reverse();
+        arrowAnimation.reverse();
+      });
+    });
+  });
+
   const { contextSafe } = useGSAP();
 
   const continueFunc = contextSafe(() => {
@@ -126,12 +186,6 @@ export default function Flow() {
 
   return (
     <>
-      <ScrollRestoration
-        preventScrollReset={true}
-        getKey={(location, matches) => {
-          return location.pathname;
-        }}
-      />
       {verticalScrollVisible && (
         <div className='fixed top-0 left-0 h-screen w-screen flex flex-col justify-between pointer-events-none items-center p-12 gap-3'>
           {currentFlow >= 1 ? (

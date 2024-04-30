@@ -7,7 +7,7 @@ body {
     font-optical-sizing: auto;
     font-style: normal;
     max-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .bg {
@@ -17,11 +17,11 @@ body {
 }
 
 ::-webkit-scrollbar {
-    padding: 5px;
+    background: rgba(0, 0, 0, 0);
     width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.24);
-    border-radius: 5px;
+    background: rgb(76, 78, 226);
+    border-radius: 10px 0px 0px 10px;
 }

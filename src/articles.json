@@ -1,8 +1,16 @@
-[
-  {
-    "title": "#1 - TVRD ('Turd') Stack",
-    "desc": "My personal favourite frameworks I use when making websites/apps",
-    "md": "1-TVRD",
-    "date": "21/02/24"
-  }
+[{
+        "title": "#1 - TVRD ('Turd') Stack",
+        "desc": "My personal favourite frameworks I use when making websites/apps",
+        "md": "1-TVRD",
+        "id": "tvrd",
+        "date": "21/02/24"
+    },
+
+    {
+        "title": "#2 - Making a 'modern' website with GSAP",
+        "desc": "New juaneth.dev redesign with GSAP animations",
+        "md": "2-GSAP-Redesign",
+        "id": "gsap-redesign",
+        "date": "30/04/24"
+    }
 ]

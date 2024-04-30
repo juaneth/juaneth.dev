@@ -11,10 +11,12 @@ export default function Avon() {
                 <h1 className='text-6xl font-bold text-white tracking-tight'>
                   Avon
                 </h1>
+
                 <h2 className='text-3xl'>
                   Developer project management made easy. Built in Rust and
                   React
                 </h2>
+                <h2 className='text-xl opacity-50'>Work in progress</h2>
               </div>
             </div>
 
@@ -30,7 +32,7 @@ export default function Avon() {
             </div>
           </div>
 
-          <div className='divider my-0'></div>
+          <div className='divider my-0 py-0'></div>
 
           <h1 className='text-4xl text-center font-bold text-white'>Widgets</h1>
           <p className='text-2xl text-center text-white'>

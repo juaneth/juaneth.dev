@@ -9,6 +9,8 @@ export default function Home() {
             juaneth.dev
           </h1>
           <p className='text-5xl'>Desktop + Web developer</p>
+
+          <div className=""></div>
         </div>
       </div>
     </>

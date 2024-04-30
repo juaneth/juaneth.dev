@@ -74,11 +74,11 @@ export default function UniSSH() {
               <div className='p-8 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
                 <h1 className='text-xl font-semibold'>Snippets (WIP)</h1>
                 <p>
-                  <kbd class='px-2 py-1 text-sm border rounded-lg dark:border-neutral-800'>
+                  <kbd className='px-2 py-1 text-sm border rounded-lg dark:border-neutral-800'>
                     ctrl
                   </kbd>{" "}
                   +{" "}
-                  <kbd class='px-2 py-1 text-sm border rounded-lg dark:border-neutral-800'>
+                  <kbd className='px-2 py-1 text-sm border rounded-lg dark:border-neutral-800'>
                     i
                   </kbd>{" "}
                   shows frequenty used commands
