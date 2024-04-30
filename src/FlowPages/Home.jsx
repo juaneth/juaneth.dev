@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
 export default function Home() {
+  document.title = `juaneth.dev`;
+
   return (
     <>
       <div className='panel h-screen min-h-screen max-h-screen'>
@@ -10,7 +12,7 @@ export default function Home() {
           </h1>
           <p className='text-5xl'>Desktop + Web developer</p>
 
-          <div className=""></div>
+          <div className=''></div>
         </div>
       </div>
     </>

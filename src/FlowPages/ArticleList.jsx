@@ -80,7 +80,7 @@ export default function ArticleList() {
                       id={`desc-${article.id}`}
                       className='article-desc text-4xl'
                     >
-                      {article.desc}
+                      {article.desc} - {article.date}
                     </p>
                   </h1>
                 ))}
