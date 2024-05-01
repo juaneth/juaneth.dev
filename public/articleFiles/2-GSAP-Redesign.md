@@ -42,7 +42,7 @@ After that of course was layouts. I took the idea of interactivity from my brows
 Finally after that whole process my design was finished in 1 night and I was ready to start working on the actual implementation.
 <br><br>
 ### - GSAP -
-GSAP (Green Sock Animation Platform) is basically what its called on the tin; an animation platform. It allows you to run animations without the ball-ache of managing CSS inside JS. I decided to use it for the scrolling so that my screen-sized chunks would snap into place nicely when they came into view. And this is where I was completely stuch for a few days.
+GSAP (Green Sock Animation Platform) is basically what its called on the tin; an animation platform. It allows you to run animations without the ball-ache of managing CSS inside JS. I decided to use it for the scrolling so that my screen-sized chunks would snap into place nicely when they came into view. And this is where I was completely stuck for a few days.
 <br><br>
 Completely not GSAP's fault, but I was struggling wrapping my head around `useGSAP()` and all the other stuff like `scrollTrigger` and `.fromTo()`. Until I found an [amazing resource on the GSAP Forums](https://gsap.com/community/forums/topic/24423-how-to-snap-instantly-on-slight-scroll/) that helped me get past the first hurdle of making this work.
 <br><br>
