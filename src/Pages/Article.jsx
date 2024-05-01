@@ -9,6 +9,9 @@ import remarkGfm from "remark-gfm";
 import articles from "../articles.json";
 import rehypeRaw from "rehype-raw";
 
+import { RxExit } from "react-icons/rx";
+import { GoShare } from "react-icons/go";
+
 export default function Article() {
   let { id } = useParams();
 
@@ -28,33 +31,50 @@ export default function Article() {
 
   return (
     <>
-      <div className='bg-gradient grow'>
-        <div className='p-5 flex flex-col md:flex-row gap-3 justify-center'>
-          <div className='join join-vertical w-full md:w-48'>
-            <Link
-              to={"/"}
-              className="btn before:content-['<-'] font-normal bg-neutral-950 gridbg text-xl bordered-all hover:bordered-all hover:bg-black/80 join-item min-w-48"
-            >
-              Go To Home
-            </Link>
-            <div className='bg-neutral-950 text-center flex flex-col text-xl p-4 gridbg bordered-all hover:bordered-all join-item'>
+      <div className='grow flex justify-center'>
+        <div className='p-5 flex flex-col gap-3 justify-center w-full md:w-[80rem]'>
+          <div className='flex flex-row rounded-lg justify-between w-full border border-white/30'>
+            <div className='join'>
+              <Link
+                to={"/"}
+                className='btn bg-black/75 h-full w-32 text-xl text-white hover:bg-white/100 hover:text-black hover:shadow-xl hover:shadow-white/20 join-item'
+              >
+                <RxExit></RxExit>
+              </Link>
+
+              <btn
+                to={"/"}
+                className='btn h-full w-16 text-xl text-white hover:bg-white/100 hover:text-black hover:shadow-xl hover:shadow-white/20 join-item'
+              >
+                <GoShare></GoShare>
+              </btn>
+            </div>
+
+            <div className='text-center px-4 gap-4 items-center flex flex-row text-xl'>
               <h1>
-                <b className='text-2xl'>Author:</b> <br></br> Juaneth
+                <b className='text-xl'>Date: </b>
+                {article.date}
               </h1>
+
               <h1>
-                <b className='text-2xl'>Date:</b> <br></br> {article.date}
+                <b className='text-xl'>ID: </b>
+                {article.md}
               </h1>
             </div>
           </div>
 
+          {/* For tailwind to generate kbd-sm css */}
+          <kbd className='kbd kbd-sm hidden'></kbd>
+
           <Markdown
-            className='article p-8 bg-neutral-950 gridbg rounded-lg bordered-all w-full md:w-[80rem]'
+            className='article py-8 px-10 bg-neutral-950/50 rounded-lg border border-white/30 w-full'
             children={markdown}
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
           ></Markdown>
         </div>
       </div>
+      <div className='bg fixed top-0 left-0 h-screen w-screen -z-10'></div>
     </>
   );
 }
