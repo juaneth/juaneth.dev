@@ -25,3 +25,8 @@ body {
     background: rgb(76, 78, 226);
     border-radius: 10px 0px 0px 10px;
 }
+
+.panel {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}

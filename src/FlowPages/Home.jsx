@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { IoIosWarning } from "react-icons/io";
 
 export default function Home() {
   document.title = `juaneth.dev`;
@@ -12,7 +13,9 @@ export default function Home() {
           </h1>
           <p className='text-5xl'>Desktop + Web developer</p>
 
-          <div className=''></div>
+          <div className='text-warning text-2xl opacity-75 flex flex-row items-center gap-3'>
+            Best viewed on desktop <IoIosWarning></IoIosWarning>
+          </div>
         </div>
       </div>
     </>

@@ -176,10 +176,19 @@ export default function Flow() {
   });
 
   const popInAnimation = contextSafe(() => {
-    gsap.from("#backBtn", {
-      y: -200,
-      ease: "expo.out",
-    });
+    gsap.fromTo(
+      "#backBtn",
+      {
+        opacity: 0,
+        y: -200,
+        ease: "expo.out",
+      },
+      {
+        opacity: 1,
+        y: 0,
+        ease: "expo.out",
+      }
+    );
   });
 
   const [verticalScrollVisible, setVerticalScrollVisible] = useState(true);
@@ -202,14 +211,18 @@ export default function Flow() {
           ) : (
             <div></div>
           )}
-          <div
-            role='button'
-            className='flex flex-col gap-3 items-center pointer-events-auto'
-            onClick={continueFunc}
-          >
-            <img src='/assets/Continue.svg' className='h-12' />
-            <h1 className='font-bold text-4xl text-white'>Continue</h1>
-          </div>
+          {currentFlow <= 3 ? (
+            <div
+              role='button'
+              className='flex flex-col gap-3 items-center pointer-events-auto'
+              onClick={continueFunc}
+            >
+              <img src='/assets/Continue.svg' className='h-12' />
+              <h1 className='font-bold text-4xl text-white'>Continue</h1>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       )}
 
