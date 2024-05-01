@@ -67,7 +67,7 @@ export default function Article() {
           <kbd className='kbd kbd-sm hidden'></kbd>
 
           <Markdown
-            className='article py-8 px-10 bg-neutral-950/50 rounded-lg border border-white/30 w-full'
+            className='article text-white/90 py-8 px-10 bg-neutral-950/50 rounded-lg border border-white/30 w-full'
             children={markdown}
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
