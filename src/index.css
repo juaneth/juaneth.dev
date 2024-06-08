@@ -12,18 +12,26 @@ body {
 
 .bloom {
     z-index: 999;
-color:transparent;
-pointer-events: none;
-position: fixed;
-inset: 0;
-backdrop-filter: saturate(2) blur(20px) brightness(2) opacity(0.2);
+    color:transparent;
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    backdrop-filter: saturate(2) blur(20px) brightness(2) opacity(0.2);
+}
+
+@keyframes load {
+  from {filter: saturate(0) blur(20px) opacity(0);}
 }
 
 .bg {
     background-image: url("/background.jpg");
     background-position: top;
     background-size: cover;
-    filter: saturate(2) blur(0px) opacity(0.2);
+    filter: saturate(1.5) blur(0px) opacity(0.5);
+    pointer-events: none;
+    animation-name: load;
+    animation-timing-function:ease-out;
+    animation-duration:1s;
 }
 
 ::-webkit-scrollbar {

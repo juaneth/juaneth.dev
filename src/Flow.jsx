@@ -214,7 +214,7 @@ export default function Flow() {
           {currentFlow <= 3 ? (
             <div
               role='button'
-              className='flex flex-col gap-3 items-center pointer-events-auto'
+              className='flex flex-col gap-3 items-center pointer-events-auto z-30'
               onClick={continueFunc}
             >
               <img src='/assets/Continue.svg' className='h-12' />
