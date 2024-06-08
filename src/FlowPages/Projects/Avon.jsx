@@ -42,14 +42,14 @@ export default function Avon() {
 
           <div className='w-full flex justify-center'>
             <div className='flex flex-wrap gap-3 justify-center'>
-              <div className='p-8 w-96 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Assets</h1>
                 <p>
                   Reuse global assets across all your projects and import them
                   (eg. reused files, css classes etc.)
                 </p>
               </div>
-              <div className='p-8 w-96 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Automation</h1>
                 <p>
                   Run scripts for building and packaging your project or write
@@ -57,12 +57,12 @@ export default function Avon() {
                 </p>
               </div>
 
-              <div className='p-8 w-96 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Build</h1>
                 <p>See your build config and build your project</p>
               </div>
 
-              <div className='p-8 w-96 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Collab</h1>
                 <p>
                   Invite other people to plan and collaborate with on your
@@ -70,7 +70,7 @@ export default function Avon() {
                 </p>
               </div>
 
-              <div className='p-8 w-96 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Dependancies</h1>
                 <p>
                   Shows all your projects dependancies in a simple lists with
@@ -78,7 +78,7 @@ export default function Avon() {
                 </p>
               </div>
 
-              <div className='p-8 w-96 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Git</h1>
                 <p>
                   Create commits, manage pull requests, manage issues, switch
@@ -86,7 +86,7 @@ export default function Avon() {
                 </p>
               </div>
 
-              <div className='p-8 w-96 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Hosting</h1>
                 <p>
                   One click uploads to update your application on your VPS or
@@ -94,7 +94,7 @@ export default function Avon() {
                 </p>
               </div>
 
-              <div className='p-8 w-96 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Information</h1>
                 <p>
                   Shows all your projects info, with custom hooks to customise
@@ -102,7 +102,7 @@ export default function Avon() {
                 </p>
               </div>
 
-              <div className='p-8 w-96 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Templater</h1>
                 <p>
                   Create a template from your project and save it so you can
@@ -111,12 +111,12 @@ export default function Avon() {
                 </p>
               </div>
 
-              <div className='p-8 w-96 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Todo</h1>
                 <p>Simple and intuitive to-do list</p>
               </div>
 
-              <div className='p-8 w-96 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Discord</h1>
                 <p>
                   Shows you a quick overview of your discord servers stats and
@@ -124,7 +124,7 @@ export default function Avon() {
                 </p>
               </div>
 
-              <div className='p-8 w-96 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Build your own</h1>
                 <p>Build your own widgets and share them as plugins!</p>
               </div>

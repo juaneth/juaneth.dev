@@ -16,20 +16,20 @@ body {
     pointer-events: none;
     position: fixed;
     inset: 0;
-    backdrop-filter: saturate(2) blur(20px) brightness(2) opacity(0.2);
+    backdrop-filter: saturate(1.75) blur(15px) brightness(2) opacity(0.2);
 }
 
-@keyframes load {
-  from {filter: saturate(0) blur(20px) opacity(0);}
+@keyframes loadbg {
+  from {filter: saturate(0) blur(32px) opacity(0);}
 }
 
 .bg {
     background-image: url("/background.jpg");
     background-position: top;
     background-size: cover;
-    filter: saturate(1.5) blur(0px) opacity(0.5);
+    filter: saturate(1.5) blur(0px) opacity(0.4);
     pointer-events: none;
-    animation-name: load;
+    animation-name: loadbg;
     animation-timing-function:ease-out;
     animation-duration:1s;
 }

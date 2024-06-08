@@ -47,31 +47,31 @@ export default function UniSSH() {
 
           <div className='w-full flex justify-center'>
             <div className='max-w-[80rem] flex flex-wrap gap-3 justify-center'>
-              <div className='p-8 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Minimal Design</h1>
                 <p>For ease of use and simplicity</p>
               </div>
-              <div className='p-8 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>SSH Connections</h1>
                 <p>Fast and easy to debug SSH connections</p>
               </div>
 
-              <div className='p-8 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Local Terminal</h1>
                 <p>Built in terminal emulator to run commands locally</p>
               </div>
 
-              <div className='p-8 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Customisation</h1>
                 <p>Completely customizable UI with Custom CSS</p>
               </div>
 
-              <div className='p-8 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>FTP (WIP)</h1>
                 <p>Transmit files without leaving uniSSH</p>
               </div>
 
-              <div className='p-8 rounded-lg text-center bg-black/10 border border-neutral-800 flex flex-col gap-3'>
+              <div className='p-6 w-96 bg-black/30 rounded-lg text-center border border-white/30 flex flex-col gap-2 backdrop-blur-lg'>
                 <h1 className='text-xl font-semibold'>Snippets (WIP)</h1>
                 <p>
                   <kbd className='px-2 py-1 text-sm border rounded-lg dark:border-neutral-800'>
