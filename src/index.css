@@ -16,13 +16,14 @@ color:transparent;
 pointer-events: none;
 position: fixed;
 inset: 0;
-backdrop-filter: saturate(2) blur(20px) brightness(1) opacity(0.2);
+backdrop-filter: saturate(2) blur(20px) brightness(2) opacity(0.2);
 }
 
 .bg {
-    background-image: url("/Background.svg");
+    background-image: url("/background.jpg");
     background-position: top;
     background-size: cover;
+    filter: saturate(2) blur(0px) opacity(0.2);
 }
 
 ::-webkit-scrollbar {

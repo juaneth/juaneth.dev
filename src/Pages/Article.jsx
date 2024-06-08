@@ -75,6 +75,7 @@ export default function Article() {
         </div>
       </div>
       <div className='bg fixed top-0 left-0 h-screen w-screen -z-10'></div>
+      <div className='bloom fixed top-0 left-0 h-screen w-screen -z-10'></div>
     </>
   );
 }
