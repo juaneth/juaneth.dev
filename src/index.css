@@ -10,6 +10,15 @@ body {
     overflow-x: hidden;
 }
 
+.bloom {
+    z-index: 999;
+color:transparent;
+pointer-events: none;
+position: fixed;
+inset: 0;
+backdrop-filter: saturate(2) blur(20px) brightness(1) opacity(0.2);
+}
+
 .bg {
     background-image: url("/Background.svg");
     background-position: top;
