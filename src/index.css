@@ -24,7 +24,7 @@ body {
 }
 
 .bg {
-    background-image: url("/background.jpg");
+    background-image: url("https://w.wallhaven.cc/full/ex/wallhaven-exlxjr.jpg");
     background-position: top;
     background-size: cover;
     filter: saturate(1.5) blur(0px) opacity(0.4);
