@@ -35,12 +35,14 @@ body {
 }
 
 ::-webkit-scrollbar {
-    background: rgba(0, 0, 0, 0);
+    background: url("https://w.wallhaven.cc/full/ex/wallhaven-exlxjr.jpg");
+    background-position: top;
+    background-size: cover;
     width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(76, 78, 226);
+    background: rgba(255, 255, 255, 0.295);
     border-radius: 10px 0px 0px 10px;
 }
 

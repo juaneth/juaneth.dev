@@ -13,6 +13,8 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
+import Snowfall from "react-snowfall";
+
 export default function Flow() {
   {
     /* GSAP Snap Scroll stuff stolen from https://gsap.com/community/forums/topic/24423-how-to-snap-instantly-on-slight-scroll/
@@ -238,7 +240,10 @@ export default function Flow() {
         <Hire></Hire>
         <Socials></Socials>
       </div>
-      <div className='bg fixed top-0 left-0 h-screen w-screen -z-10'></div>
+
+      <div className='bg fixed top-0 left-0 h-screen w-screen -z-10'>
+        <Snowfall />
+      </div>
       <div className='bloom fixed top-0 left-0 h-screen w-screen -z-10'></div>
     </>
   );
