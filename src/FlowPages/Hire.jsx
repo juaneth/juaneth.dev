@@ -10,7 +10,7 @@ export default function Hire() {
             <div className='w-full flex flex-row justify-between'>
               <div className='flex flex-col gap-5'>
                 <h1 className='text-7xl lg:text-8xl font-bold text-white tracking-tight'>
-                  Hire me:
+                  Services:
                 </h1>
 
                 <h1
